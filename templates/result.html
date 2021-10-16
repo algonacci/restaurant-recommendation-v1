@@ -1,0 +1,65 @@
+<html>
+  <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+      <title>Travens AI</title>
+  </head>
+    <body>
+      <div class="jumbotron">
+        <img src="/static/1.png" alt="Travens AI" style="width: 300px; height: 300px; margin-left: 500px; margin-right: 500px;">
+        <h1 class="text-center">Mood based Restaurant Recommendation 🍕 🍔 🍟</h1>
+      </div>
+      <div class="container text-center">
+        <p style="margin-bottom: 20px">In {{ mood }} mood, here are some suggestions, you can try:</p>
+        <div class="card-deck" style="margin-bottom: 20px">
+          {% for restaurant in restaurants1 %}
+          <div class="card" style="padding-top: 15px; padding-bottom: 15px;">
+            <h5>{{ restaurant["Restaurant Name"] }}</h5>
+            <p style="font-size: 12px; color: grey">{{ restaurant["Cuisines"] }}</p>
+            <p style="font-size: 12px; color: grey; margin-top: -15px"> Avg. Cost for 2: Rp{{ restaurant["Average Cost for two"] }}</p>
+            <p>⭐️ {{ restaurant["Aggregate rating"] }} Rating</p>
+            <p>{{ restaurant["Address"] }}</p>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="card-deck" style="margin-bottom: 20px">
+          {% for restaurant in restaurants2 %}
+          <div class="card" style="padding-top: 15px; padding-bottom: 15px;">
+            <h5>{{ restaurant["Restaurant Name"] }}</h5>
+            <p style="font-size: 12px; color: grey">{{ restaurant["Cuisines"] }}</p>
+            <p style="font-size: 12px; color: grey; margin-top: -15px"> Avg. Cost for 2: Rp{{ restaurant["Average Cost for two"] }}</p>
+            <p>⭐️ {{ restaurant["Aggregate rating"] }} Rating</p>
+            <p>{{ restaurant["Address"] }}</p>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="card-deck" style="margin-bottom: 20px">
+          {% for restaurant in restaurants3 %}
+          <div class="card" style="padding-top: 15px; padding-bottom: 15px;">
+            <h5>{{ restaurant["Restaurant Name"] }}</h5>
+            <p style="font-size: 12px; color: grey">{{ restaurant["Cuisines"] }}</p>
+            <p style="font-size: 12px; color: grey; margin-top: -15px"> Avg. Cost for 2: Rp{{ restaurant["Average Cost for two"] }}</p>
+            <p>⭐️ {{ restaurant["Aggregate rating"] }} Rating</p>
+            <p>{{ restaurant["Address"] }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </body>
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+      <div class="container">
+          <p class="lead">Copyright &copy; 2021</p>
+          <p>
+              Made with
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill text-danger" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+              </svg>
+              by <a href="https://github.com/travens-id" class="text-white fw-bold">Travens AI</a>
+          </p>
+          <a href="#" class="position-absolute bottom-0 end-0 p-5">
+              <i class="bi bi-arrow-up-circle h1"></i>
+          </a>
+      </div>
+  </footer>
+</html>
