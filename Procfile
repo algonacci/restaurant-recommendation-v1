@@ -1,1 +1,1 @@
-web: gunicorn "app:search_comfort(mood)"
+web: gunicorn app:app --timeout 60
