@@ -36,39 +36,40 @@ def find_my_comfort_food(mood):
   topn = search_comfort(mood) #function create dictionary only for particular mood
   return topn[:3]
 
-app = Flask(__name__)
+def create_app():
+  app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def home():
-  return render_template('index.html')
+  @app.route('/', methods=['GET'])
+  def home():
+    return render_template('index.html')
 
-@app.route('/find', methods=['GET'])
-def find_restaurant():
-  mood = request.args.get('mood')
-  result = find_my_comfort_food(mood)
-  result_str = 'You should eat {}, {}, or {}.'.format(result[0], result[1], result[2])
-  food_to_cuisine_map = {
-    "japanese": "japanese",
-    "korean": "korean",
-    "sunda": "sunda",
-    "indonesian": "indonesian",
-    "peranakan": "peranakan",
-    "burger": "burger",
-    "italian": "italian",
-    "café": "café",
-    "seafood": "seafood",
-    "western food": "western food",
-    "desserts": "desserts",
-    "bakery": "bakery",
-    "coffee and tea": "coffee and tea",
-    "cafe": "italian",
-    "ramen" : "japanese",
-    "pizza": "pizza",
-  }
-  restaurants_list = []
-  for item in result:
-    restaurants = res_data[res_data.Cuisines.str.contains(food_to_cuisine_map[item], case=False)].sort_values(by='Aggregate rating', ascending=False).head(3)
-    restaurants_list.append(restaurants.iloc[0])
-    restaurants_list.append(restaurants.iloc[1])
-    restaurants_list.append(restaurants.iloc[2])
-  return render_template('result.html', result = result_str, mood = mood, restaurants1 = restaurants_list[:3], restaurants2 = restaurants_list[3:6], restaurants3 = restaurants_list[6:])
+  @app.route('/find', methods=['GET'])
+  def find_restaurant():
+    mood = request.args.get('mood')
+    result = find_my_comfort_food(mood)
+    result_str = 'You should eat {}, {}, or {}.'.format(result[0], result[1], result[2])
+    food_to_cuisine_map = {
+      "japanese": "japanese",
+      "korean": "korean",
+      "sunda": "sunda",
+      "indonesian": "indonesian",
+      "peranakan": "peranakan",
+      "burger": "burger",
+      "italian": "italian",
+      "café": "café",
+      "seafood": "seafood",
+      "western food": "western food",
+      "desserts": "desserts",
+      "bakery": "bakery",
+      "coffee and tea": "coffee and tea",
+      "cafe": "italian",
+      "ramen" : "japanese",
+      "pizza": "pizza",
+    }
+    restaurants_list = []
+    for item in result:
+      restaurants = res_data[res_data.Cuisines.str.contains(food_to_cuisine_map[item], case=False)].sort_values(by='Aggregate rating', ascending=False).head(3)
+      restaurants_list.append(restaurants.iloc[0])
+      restaurants_list.append(restaurants.iloc[1])
+      restaurants_list.append(restaurants.iloc[2])
+    return render_template('result.html', result = result_str, mood = mood, restaurants1 = restaurants_list[:3], restaurants2 = restaurants_list[3:6], restaurants3 = restaurants_list[6:])
