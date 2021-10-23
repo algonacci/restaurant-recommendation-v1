@@ -14,4 +14,3 @@ regex==2021.10.8
 six==1.16.0
 tqdm==4.62.3
 Werkzeug==2.0.2
-lemminflect
