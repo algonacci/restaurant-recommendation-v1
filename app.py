@@ -6,6 +6,8 @@ stop = set(stopwords.words('english'))
 stop.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}',''])
 from nltk.stem import WordNetLemmatizer
 
+nltk.download()
+
 food_data = pd.read_csv('Book1.csv', encoding='latin-1')
 res_data = pd.read_csv('Book2.csv', encoding='latin-1')
 res_data = res_data.loc[(res_data['Country Code'] == 94) & (res_data['City'] == 'Jakarta'), :]
